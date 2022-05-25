@@ -30,8 +30,8 @@ This application currently does not have any licenses.
 
 - [Github branch issue resolution](https://stackoverflow.com/questions/65173291/git-push-error-src-refspec-main-does-not-match-any-on-linux) -- really the issue ended up being that I didn't do a "git add -A".... novice mistake...
 - [MySQL Drop Database Command](https://www.mysqltutorial.org/mysql-drop-database/)
-- []()
-- []()
+- [JAWSDB](https://www.jawsdb.com/docs/#mysql), needed to research why I needed the if statement in my connection.js file and what it meant to set `process.env.JAWSDB_URL` as one of the environment variables
+- [Node Path module](https://nodejs.dev/learn/the-nodejs-path-module)
 - []()
 - []()
 - []()
