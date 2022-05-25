@@ -32,6 +32,9 @@ This application currently does not have any licenses.
 - [MySQL Drop Database Command](https://www.mysqltutorial.org/mysql-drop-database/)
 - [JAWSDB](https://www.jawsdb.com/docs/#mysql), needed to research why I needed the if statement in my connection.js file and what it meant to set `process.env.JAWSDB_URL` as one of the environment variables
 - [Node Path module](https://nodejs.dev/learn/the-nodejs-path-module)
+- [Connect-Session-Sequelize](https://www.npmjs.com/package/connect-session-sequelize)
+- [express-session-sequelize](https://www.npmjs.com/package/express-session-sequelize)
+- []()
 - []()
 - []()
 - []()
