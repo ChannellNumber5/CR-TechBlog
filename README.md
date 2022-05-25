@@ -29,7 +29,7 @@ This application currently does not have any licenses.
 ## Resources
 
 - [Github branch issue resolution](https://stackoverflow.com/questions/65173291/git-push-error-src-refspec-main-does-not-match-any-on-linux) -- really the issue ended up being that I didn't do a "git add -A".... novice mistake...
-- []()
+- [MySQL Drop Database Command](https://www.mysqltutorial.org/mysql-drop-database/)
 - []()
 - []()
 - []()
