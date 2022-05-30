@@ -21,7 +21,7 @@ const sesh = {
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-        db:sequelize
+        db: sequelize
     })
 };
 
