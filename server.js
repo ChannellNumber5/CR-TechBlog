@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // serves out public st
 
 app.use(routes); //uses the controller to handle routes and requests to routes
 
-//syncs all sequelize models in the database and then starts up the server
+//syncs all sequelize models in the database, without overwriting them, and then starts up the server
 sequelize.sync({force:false}).then(() => {
     app.listen(PORT, 'localhost', () => {
         console.log(`The server is listening at Port: ${PORT}`);
