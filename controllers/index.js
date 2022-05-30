@@ -9,7 +9,7 @@ const router = require('express').Router();
 //need to determine what routes to use... what do I want the URL path to be?
 
 //Maybe...
-router.use('/bloghome', homeRoutes);
-router.use('/users', apiRoutes)
+// router.use('/bloghome', homeRoutes);
+// router.use('/users', apiRoutes)
 
 module.exports = router;

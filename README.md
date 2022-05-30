@@ -34,7 +34,7 @@ This application currently does not have any licenses.
 - [Node Path module](https://nodejs.dev/learn/the-nodejs-path-module)
 - [Connect-Session-Sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 - [express-session-sequelize](https://www.npmjs.com/package/express-session-sequelize)
-- []()
-- []()
+- [View Engines](https://www.geeksforgeeks.org/how-to-setup-view-engine-in-node-js/) - quick skim to get a rough idea of view engines and what this line of code: `app.set('view engine', 'handlebars');` actually means
+- [Session Management](https://handyman.dulare.com/session-management-in-express/) - an old article, but helpful for visualizing what happens in sessions
 - []()
 - []()
