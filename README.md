@@ -38,3 +38,4 @@ This application currently does not have any licenses.
 - [Session Management](https://handyman.dulare.com/session-management-in-express/) - an old article, but helpful for visualizing what happens in sessions
 - [Timing Attacks](https://codahale.com/a-lesson-in-timing-attacks/) - an interesting read on timing attacks, when researching compare vs compareSync in bcrpyt
 - [Hooks in Sequelize Models](https://sequelize.org/docs/v6/other-topics/hooks/)
+- [Http Status Code: 204](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204)
