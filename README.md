@@ -39,3 +39,4 @@ This application currently does not have any licenses.
 - [Timing Attacks](https://codahale.com/a-lesson-in-timing-attacks/) - an interesting read on timing attacks, when researching compare vs compareSync in bcrpyt
 - [Hooks in Sequelize Models](https://sequelize.org/docs/v6/other-topics/hooks/)
 - [Http Status Code: 204](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204)
+- [Spread Operator Example](https://sebhastian.com/javascript-spread-operator/) - helpful in understanding goal of using spread operator, when creating new model instance from request body
