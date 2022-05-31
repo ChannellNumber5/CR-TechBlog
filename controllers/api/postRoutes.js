@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const {Post} = require('../../models');
+const authenticated  = require('../../utils/auth');
 
-//posts new blog post
-router.post('/', async (req, res) => { // still need to add authentication
+//posts new blog post, but can only be accessed when user is logged in based on authenticated middleware
+router.post('/', authenticated, async (req, res) => {
     try {
         const newPost = await Post.create({
             ...req.body, //spread operator used to merge object properties to create new post
@@ -15,8 +16,8 @@ router.post('/', async (req, res) => { // still need to add authentication
     }
 });
 
-//delete route, if user decides to delete any posts they've created
-router.delete('/:id', async (req, res) => { //still need authentication, so can only delete post when logged in
+//delete route, if user decides to delete any posts they've created. Can only be accessed when user is logged in
+router.delete('/:id', authenticated, async (req, res) => { 
     try {
         const postData = await Post.destroy({
             where: {
