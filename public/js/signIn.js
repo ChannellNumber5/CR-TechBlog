@@ -1,7 +1,7 @@
 async function loginHandler(event) {
     event.preventDefault();
-    const username = document.querySelector('#username').value;
-    const password = document.querySelector('#password').value;
+    const username = document.querySelector('#username').value.trim();
+    const password = document.querySelector('#password').value.trim();
     if (!username) {
         alert("Please Enter a username");
         document.getElementById('logInForm').reset();
@@ -30,10 +30,10 @@ async function loginHandler(event) {
 
 async function signUpHandler(event) {
     event.preventDefault();
-    const username = document.querySelector('#username').value;
-    const password = document.querySelector('#password').value;
-    const email = document.querySelector('#userEmail').value;
-    const verifPass = document.querySelector('#repass').value;
+    const username = document.querySelector('#username').value.trim();
+    const password = document.querySelector('#password').value.trim();
+    const email = document.querySelector('#userEmail').value.trim();
+    const verifPass = document.querySelector('#repass').value.trim();
 
     if (username && email && (password === verifPass)) {
         const response = await fetch('api/user', {
