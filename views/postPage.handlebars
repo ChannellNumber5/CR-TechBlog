@@ -4,8 +4,8 @@
             <h3>${post.title}</h3>
             <h5>Posted by ${post.username} on ${post.date}</h5>
         </div>
-        <div class="postBody">
-            <p>${post.body}</p>
+        <div class="postContent">
+            <p>${post.content}</p>
         </div>
         <div class="footer">
         </div>
@@ -18,7 +18,7 @@
                 <p>${comment.content}</p>
             </div>
             <div class="commentFooter">
-                <h6>Posted by ${comment.username} on ${comment.date}</h6>
+                <h6>${comment.username} on ${comment.date}</h6>
             </div>
         </div>
         {{/each}}
