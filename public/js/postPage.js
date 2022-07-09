@@ -1,3 +1,11 @@
+const commentText = document.querySelector('#newCommentText').value();
+
 function addComment(event) {
-    const commentText = document.querySelector('#newCommentText').value();
-}
+    if (commentText) {
+        const response = await fetch('/post/addComment')
+    }
+
+};
+
+
+document.getElementById('#submitComment').addEventListener('Submit', addComment);
