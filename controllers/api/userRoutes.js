@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
         const userData = await User.create(req.body);
 
         req.session.save(() => {
-            req.session.userId = userData.isSoftDeleted;
+            req.session.userId = userData.id;
             req.session.loggedIn = true;
 
             res.status(200).json(userData);
@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
         }
     });
 
-    // if the user is logged in, the log out route will destroy the session and then send a 
+    // if the user is logged in, the log out route will destroy the session and then send a successful status saying session has been
     router.post('/logout', (req, res) => {
         if (req.session.loggedIn) {
             req.session.destroy(() => {

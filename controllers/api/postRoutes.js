@@ -16,6 +16,37 @@ router.post('/', authenticated, async (req, res) => {
     }
 });
 
+router.get('/:postId', authenticated, async (req, res) => {
+    try {
+        const newPost = await Post.findOne({
+            ...req.body, //spread operator used to merge object properties to create new post
+            userId: req.session.userId, //sets the association between the current user logged in and the post that is being created.
+        });
+
+        res.status(200).json(newPost);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+router.post('/comment/:postId', authenticated, async (req, res) => {
+    try {
+        const newComment = await Comment.create({
+            ...req.body,
+            userId: req.session.userId,
+        })
+    }
+});
+
+router.get('/comment', authenticated, async (req, res) => {
+    try {
+        const postComments = await Comment.findAll({
+            ...req.body,
+            userId: req.session.userId,
+        })
+    }
+});
+
 //delete route, if user decides to delete any posts they've created. Can only be accessed when user is logged in
 router.delete('/:id', authenticated, async (req, res) => { 
     try {
