@@ -57,3 +57,6 @@ async function signUpHandler(event) {
         alert("Please ensure all required fields are complete");
     }
 };
+
+document.querySelector('.logInForm').addEventListener("submit", loginHandler);
+document.querySelector('.signUpForm').addEventListener("submit", signUpHandler);
