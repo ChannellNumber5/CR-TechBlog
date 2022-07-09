@@ -1,6 +1,6 @@
 # The Tech Blog
 
-Check out this application [here](), deployed on Heroku!
+Check out this application [here](https://whispering-ocean-78353.herokuapp.com/), deployed on Heroku!
 
 Also, if you want to check out the Github repository, you can find it [here](https://github.com/ChannellNumber5/CR-TechBlog).
 
@@ -8,11 +8,11 @@ Also, if you want to check out the Github repository, you can find it [here](htt
 
 This Tech Blog is an express application that uses MySQL, Sequelize, and express session to allow the user to create and post their own blog posts on this community page. The user is able to create an account and can then create blog posts and then log in to see their created posts and add new ones. In addition to making posts, users are able to add comments to existing posts that are shown on the homepage.
 
-On the front end, this application uses handlebars to modularize the code and client facing webpage designa and information.
+On the front end, this application uses handlebars to modularize the code and client facing webpage design a and information.
 
 ## Installation
 
-Since this application will be deployed on Heroku, there are no installation steps, just visit [this]() webpage.
+Since this application will be deployed on Heroku, there are no installation steps, just visit [this](https://devcenter.heroku.com/categories/reference) webpage.
 
 ## Usage
 
