@@ -1,0 +1,30 @@
+<div id="IndivPostSection">
+    <div class="postCard">
+        <div class="titleBlock">
+            <h3>${post.title}</h3>
+            <h5>Posted by ${post.username} on ${post.date}</h5>
+        </div>
+        <div class="postBody">
+            <p>${post.body}</p>
+        </div>
+        <div class="footer">
+        </div>
+    </div>
+    <div class="commentContainer">
+        {{#each comments as |comment|}}
+        <div class="commentCard">
+            <div class="commentHeader"></div>
+            <div class="commentBody">
+                <p>${comment.content}</p>
+            </div>
+            <div class="commentFooter">
+                <h6>Posted by ${comment.username} on ${comment.date}</h6>
+            </div>
+        </div>
+        {{/each}}
+        <div class="newComment">
+            <textarea id="newCommentText" name="newCommentText"></textarea>
+        </div>
+        <button type="submit" value="Submit"></button>
+    </div>
+</div>
