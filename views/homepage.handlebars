@@ -1,41 +1,16 @@
-<!DOCTYPE>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>//Remarked</title>
-    </head>
-    <body>    
-        <header> 
-            <h1>//Remarked - A Tech Blog Community</h1>
-        </header>
-        <main>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Profile</a></li>
-                    {{#if logged_in}}
-                        <li><a href="#">Logout</a></li>
-                    {{/if}}
-                    {{#if !logged_in}}
-                        <li><a href="#">Log In/Sign Up</a></li>
-                    {{/if}}
-                </ul>
-            </nav>
-            <section id="Blog Posts">
-                <h2>Remarked Public Posts</h2>
-                {{#each post in posts}}
-                <div class="postCard">
-                    <div class="titleBlock">
-                        <h3>${post.title}</h3>
-                    </div>
-                    <div class="postBody">
-                        <p>${post.body}</p>
-                    </div>
-                    
-                </div>
-                {{//each}}
-            </section>
-        </main>
-    </body>
-</html>
+<div id="Blog Posts">
+    <h2>Remarked Public Posts</h2>
+    {{#each post in posts}}
+    <div class="postCard">
+        <div class="titleBlock">
+            <h3>${post.title}</h3>
+        </div>
+        <div class="postBody">
+            <p>${post.body}</p>
+        </div>
+        <div class="footer">
+            <h4>Posted by ${req.session.username} on ${req.}</h4>
+        </div>
+    </div>
+    {{//each}}
+</div>

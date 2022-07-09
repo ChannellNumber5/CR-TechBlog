@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>//Remarked</title>
+    </head>
+    <body>    
+        <header> 
+            <h1>//Remarked - A Tech Blog Community</h1>
+        </header>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    {{#if logged_in}}
+                        <li><a href="#">Logout</a></li>
+                    {{/if}}
+                    {{#if !logged_in}}
+                        <li><a href="#">Log In/Sign Up</a></li>
+                    {{/if}}
+                </ul>
+            </nav>
+        <main>
+            {{{body}}}
+        </main>
+    </body>
+</html>
