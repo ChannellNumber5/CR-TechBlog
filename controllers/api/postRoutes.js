@@ -3,14 +3,14 @@ const {Post} = require('../../models');
 const authenticated  = require('../../utils/auth');
 
 //what do I need:
-//Get all posts
-//Get post and associated comments for that post
-//Get all posts for single user
-//Update Post
+//Get all posts - done
+//Get single post and associated comments for that post - done
+//Get all posts for single user -- done
+//Update Post -- done
 //Update comment on post?
 //Create new post -- done
-//Create new comment
-//Delete Post
+//Create new comment -- done
+//Delete Post -- done
 //Delete Comment?
 
 
@@ -45,13 +45,19 @@ router.get('/', authenticated, async (req, res) => {
     }
 });
 
-
+//gets single post by it's id and it's associated comments
 router.get('/:postId', authenticated, async (req, res) => {
     try {
         const queriedPost = await Post.findOne({
             where: {
                 id: req.params.id
             },
+            include: [
+                {
+                    model:Comment,
+                    attributes:['userId','dateCreated', 'content']
+                },
+            ]
         });
 
         res.status(200).json(queriedPost);
@@ -60,6 +66,46 @@ router.get('/:postId', authenticated, async (req, res) => {
     }
 });
 
+//gets all posts for single user and their associated comments
+router.get('/:userId', authenticated, async (req, res) => {
+    try {
+        const queriedPost = await Post.findAll({
+            where: {
+                userId: req.params.id
+            },
+            include: [
+                {
+                    model:Comment,
+                    attributes:['userId','dateCreated', 'content']
+                },
+            ]
+        });
+
+        res.status(200).json(queriedPost);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+//gets single post by it's id and it's associated comments
+router.put('/:postId', authenticated, async (req, res) => {
+    try {
+        const updatedPost = await Post.update({
+            ...req.body
+            },
+            {
+            where: {
+                id: req.params.id
+            }
+        });
+
+        res.status(200).json(updatedPost);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+//creates new comment with user's id who is currently logged in and posting the comment
 router.post('/comment', authenticated, async (req, res) => {
     try {
         const newComment = await Comment.create({
@@ -68,6 +114,17 @@ router.post('/comment', authenticated, async (req, res) => {
         });
 
         res.status(200).json(newComment);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+//finds all comments
+router.get('/comment', authenticated, async (req, res) => {
+    try {
+        const comments = await Comment.findAll();
+
+        res.status(200).json(comments);
     } catch (err) {
         res.status(400).json(err);
     }
@@ -90,6 +147,27 @@ router.delete('/:id', authenticated, async (req, res) => {
         }
 
         res.status(200).json(postData); //returns deleted post's information        
+    } catch (err) {
+        res.status(500).json(err); //sends user a server error
+    }
+});
+
+//delete route, if user decides to delete any posts they've created. Can only be accessed when user is logged in
+router.delete('/comment/:id', authenticated, async (req, res) => { 
+    try {
+        const commentData = await Comment.destroy({
+            where: {
+                id: req.params.id,
+                userId: req.session.userId,
+            },
+        });
+
+        if (!commentData) {
+            res.status(404).json({message: "Error when trying to find this comment to delete"}); //this error message won't be super relevant because the delete button is located on the comment itself
+            return;
+        }
+
+        res.status(200).json(commentData); //returns deleted post's information        
     } catch (err) {
         res.status(500).json(err); //sends user a server error
     }
