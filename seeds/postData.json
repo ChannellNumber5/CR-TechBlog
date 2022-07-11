@@ -1,0 +1,37 @@
+[
+    {"id":1,
+    "title": "CoolPost1",
+    "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper.",
+    "userId": 1
+    },
+    {"id":2,
+        "title": "CoolPost2",
+        "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper.",
+        "userId": 1
+    },
+    {"id":3,
+        "title": "RadPost1",
+        "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper.",
+        "userId": 2
+    },
+    {"id":4,
+        "title": "RadPost2",
+        "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper.",
+        "userId": 2
+    },
+    {"id":5,
+        "title": "AwesomePost1",
+        "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper.",
+        "userId": 3
+    },
+    {"id":6,
+        "title": "AwesomePost2",
+        "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper.",
+        "userId": 3
+    },
+    {"id":7,
+        "title": "InterestingPost1",
+        "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper.",
+        "userId": 4
+    }
+]
