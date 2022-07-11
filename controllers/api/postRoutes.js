@@ -2,6 +2,18 @@ const router = require('express').Router();
 const {Post} = require('../../models');
 const authenticated  = require('../../utils/auth');
 
+//what do I need:
+//Get all posts
+//Get post and associated comments for that post
+//Get all posts for single user
+//Update Post
+//Update comment on post?
+//Create new post -- done
+//Create new comment
+//Delete Post
+//Delete Comment?
+
+
 //posts new blog post, but can only be accessed when user is logged in based on authenticated middleware
 router.post('/', authenticated, async (req, res) => {
     try {
@@ -16,27 +28,33 @@ router.post('/', authenticated, async (req, res) => {
     }
 });
 
-router.get('/comment', authenticated, async (req, res) => {
+//finds all posts and their associated comments
+router.get('/', authenticated, async (req, res) => {
     try {
-        const postComments = await Comment.findAll({
+        const posts = await Post.findAll({
             include: [
             {
                 model:Comment,
                 attributes:['userId','dateCreated', 'content']
             },
             ]
-        })
+        });
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json(err);
     }
 });
 
+
 router.get('/:postId', authenticated, async (req, res) => {
     try {
-        const newPost = await Post.findOne({
-            ...req.body, //spread operator used to merge object properties to create new post
-            userId: req.session.userId, //sets the association between the current user logged in and the post that is being created.
+        const queriedPost = await Post.findOne({
+            where: {
+                id: req.params.id
+            },
         });
 
-        res.status(200).json(newPost);
+        res.status(200).json(queriedPost);
     } catch (err) {
         res.status(400).json(err);
     }
