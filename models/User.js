@@ -45,6 +45,10 @@ User.init(
                 newUserInfo.password = await bcrypt.hash(newuserInfo.password, 10);
                 return newUserInfo;
             },
+            beforeBulkCreate: async (newUserInfo) => {
+                newUserInfo.password = await bcrypt.hash(newuserInfo.password, 10);
+                return newUserInfo;
+            },
             //hashes user's updated password, if user decides to update their password
             beforeupdate: async (updatedUserInfo) => {
                 updatedUserInfo.password = await bcrypt.hash(updatedUserInfo.password, 10);
