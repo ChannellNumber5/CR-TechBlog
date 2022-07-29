@@ -34,7 +34,8 @@ router.get('/', authenticated, async (req, res) => {
         const posts = await Post.findAll({
             include: [
                 {
-                    model: Comment
+                    model: Comment,
+                    attributes:['userId','dateCreated', 'content']
                 }
             ],
         });
@@ -49,7 +50,7 @@ router.get('/:postId', authenticated, async (req, res) => {
     try {
         const queriedPost = await Post.findOne({
             where: {
-                id: req.params.id
+                id: req.params.postId
             },
             include: [
                 {
@@ -70,7 +71,7 @@ router.get('/:userId', authenticated, async (req, res) => {
     try {
         const queriedPost = await Post.findAll({
             where: {
-                userId: req.params.id
+                userId: req.params.userId
             },
             include: [
                 {
