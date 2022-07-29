@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Post} = require('../../models');
+const {Post, Comment} = require('../../models');
 const authenticated  = require('../../utils/auth');
 
 //what do I need:
@@ -33,11 +33,10 @@ router.get('/', authenticated, async (req, res) => {
     try {
         const posts = await Post.findAll({
             include: [
-            {
-                model:Comment,
-                attributes:['userId','dateCreated', 'content']
-            },
-            ]
+                {
+                    model: Comment
+                }
+            ],
         });
         res.status(200).json(posts);
     } catch (err) {
