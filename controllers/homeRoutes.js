@@ -37,4 +37,28 @@ router.get('/dashboard', Authenticated, async (req, res) => {
 });
 
 //postPage shows the specific page for each post and associated comments with post. Users can also add comments to posts from this page
-router.get('/postPage');
+router.get('/postPage/:postId', Authenticated, async (req, res) => {
+    try {
+        const postData = await Post.findOne(req.params.postId, {
+            where: {
+                id: req.params.postId
+            },
+            include: [
+                {
+                    model:Comment,
+                    attributes:['id','userId','dateCreated', 'content']
+                },
+            ]
+        });
+        if(!postData) {
+            res.json ({message: "No Posts Found."})
+            .render('postPage');
+        }
+
+        const post = postData.map((posts) => postData.get({ plain:true }));
+        res.render('postPage', { post });
+    } catch (err) {
+        res.status(500).json({message: 'Error loading post'})
+        .render('postPage');
+    }
+});
