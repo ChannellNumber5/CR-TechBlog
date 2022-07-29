@@ -35,7 +35,7 @@ router.get('/', authenticated, async (req, res) => {
             include: [
                 {
                     model: Comment,
-                    attributes:['userId','dateCreated', 'content']
+                    attributes:['id','userId','dateCreated', 'content']
                 }
             ],
         });
@@ -55,7 +55,7 @@ router.get('/:postId', authenticated, async (req, res) => {
             include: [
                 {
                     model:Comment,
-                    attributes:['userId','dateCreated', 'content']
+                    attributes:['id','userId','dateCreated', 'content']
                 },
             ]
         });
@@ -76,7 +76,7 @@ router.get('/:userId', authenticated, async (req, res) => {
             include: [
                 {
                     model:Comment,
-                    attributes:['userId','dateCreated', 'content']
+                    attributes:['id','userId','dateCreated', 'content']
                 },
             ]
         });
@@ -121,9 +121,10 @@ router.post('/comment', authenticated, async (req, res) => {
 
 //finds all comments
 router.get('/comment', authenticated, async (req, res) => {
+    console.log(`Retrieving comments`);
     try {
         const comments = await Comment.findAll();
-
+        console.log(`here are the comments: ${comments}`);
         res.status(200).json(comments);
     } catch (err) {
         res.status(400).json(err);
