@@ -12,7 +12,7 @@ async function loginHandler(event) {
         document.getElementById('logInForm').reset();
     }
 
-    const response = await fetch('api/user', {
+    const response = await fetch('api/users/login', {
         method: 'POST',
         body: JSON.stringify({
             username,
@@ -36,7 +36,7 @@ async function signUpHandler(event) {
     const verifPass = document.querySelector('#repass').value.trim();
 
     if (username && email && (password === verifPass)) {
-        const response = await fetch('api/user', {
+        const response = await fetch('api/users/', {
             method: 'POST',
             body: JSON.stringify({
                 username,
