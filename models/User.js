@@ -34,7 +34,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [9],
+                len: [8],
             },
         },
     },
@@ -42,15 +42,17 @@ User.init(
         hooks: {
             //hashes user password before creating user and saving their "profile" into the database
             beforeCreate: async (newUserInfo) => {
-                newUserInfo.password = await bcrypt.hash(newuserInfo.password, 10);
+                newUserInfo.password = await bcrypt.hash(newUserInfo.password, 10);
                 return newUserInfo;
             },
             beforeBulkCreate: async (newUserInfo) => {
-                newUserInfo.password = await bcrypt.hash(newuserInfo.password, 10);
+                for (const user of newUserInfo) {
+                user.password = await bcrypt.hash(user.password, 10);
+                }
                 return newUserInfo;
             },
             //hashes user's updated password, if user decides to update their password
-            beforeupdate: async (updatedUserInfo) => {
+            beforeUpdate: async (updatedUserInfo) => {
                 updatedUserInfo.password = await bcrypt.hash(updatedUserInfo.password, 10);
                 return updatedUserInfo;
             },
