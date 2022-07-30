@@ -2,13 +2,17 @@
     <h2>Your Dashboard</h2>
     <ul>
     {{#each post in plainPosts}}
+    <div class="postCard" id=`&{post.id}`>
     <div class="postTitle">
         <h3>${post.title}</h3>
     </div>
     <div class="postDate">
         <h3>${post.date}</h3>
     </div>
+    </div>
     {{//each}}
     </ul>
     <button type="button" value="newPost">+ New Post</button>
 </div>
+
+<script src="./js/dashboard.js"></script>
