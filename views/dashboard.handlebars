@@ -1,14 +1,15 @@
-<div id="Blog Posts">
+<div id="blogPosts">
     <h2>Your Dashboard</h2>
     <ul>
     {{#each post in plainPosts}}
-    <div class="postCard" id=`&{post.id}`>
+    <div class="postCard" id=`post${post.id}`>
     <div class="postTitle">
         <h3>${post.title}</h3>
     </div>
     <div class="postDate">
         <h3>${post.date}</h3>
     </div>
+    <button class="deleteBtn">x</button>
     </div>
     {{//each}}
     </ul>
