@@ -5,7 +5,7 @@ function postSelectHandler (event) {
 
     if (event.target.hasClass("postCard")) {
         const postId = event.target.getAttribute('id');
-        document.location.replace(`/postPage/${postId}`);
+        window.location.replace(`/postPage/${postId}`);
     }
 }
 

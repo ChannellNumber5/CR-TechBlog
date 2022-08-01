@@ -6,7 +6,7 @@ function postSelectHandler (event) {
 
     if (event.target.hasClass("postCard")) {
         const postId = event.target.getAttribute('id');
-        document.location.replace(`/postPage/${postId}`);
+        window.location.replace(`/postPage/${postId}`);
     }
 }
 
@@ -26,7 +26,7 @@ async function postDeleteHandler (event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard')
+            window.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }
