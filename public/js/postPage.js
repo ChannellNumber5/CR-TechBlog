@@ -1,6 +1,7 @@
 const commentText = document.querySelector('#newCommentText').value();
 
 function addComment(event) {
+    event.preventDefault();
     if (commentText) {
         const response = await fetch('/post/comment', {
             method: 'POST',
@@ -12,9 +13,10 @@ function addComment(event) {
 
         if (response.ok) {
             window.location.reload();
+        } else {
+            alert(response.statusText);
         }
     }
-
 };
 
 

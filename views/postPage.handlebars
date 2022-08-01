@@ -1,24 +1,24 @@
 <div id="IndivPostSection">
     <div class="postCard">
         <div class="titleBlock">
-            <h3>${post.title}</h3>
-            <h5>Posted by ${post.username} on ${post.date}</h5>
+            <h3>{{post.title}}</h3>
+            <h5>Posted by {{post.username}} on {{post.date}}</h5>
         </div>
         <div class="postContent">
-            <p>${post.content}</p>
+            <p>{{post.content}}</p>
         </div>
         <div class="footer">
         </div>
     </div>
     <div class="commentContainer">
-        {{#each Plaincomments as |comment|}}
-        <div class="commentCard">
+        {{#each plainComments as |comment|}}
+        <div class="commentCard" id={{comment.id}} data-username={{comment.username}}>
             <div class="commentHeader"></div>
             <div class="commentBody">
-                <p>${comment.content}</p>
+                <p>{{comment.content}}</p>
             </div>
             <div class="commentFooter">
-                <h6>${comment.username} on ${comment.date}</h6>
+                <h6>{{comment.username}} on {{comment.date}}</h6>
             </div>
         </div>
         {{/each}}
