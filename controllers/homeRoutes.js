@@ -62,3 +62,5 @@ router.get('/postPage/:postId', Authenticated, async (req, res) => {
         .render('postPage');
     }
 });
+
+module.exports = router;
