@@ -1,4 +1,4 @@
-const { router } = require("express").Router();
+const router = require("express").Router();
 const { User, Post, Comment } = require('../models');
 const Authenticated = require('../utils/auth');
 
@@ -61,6 +61,15 @@ router.get('/postPage/:postId', Authenticated, async (req, res) => {
         res.status(500).json({message: 'Error loading post'})
         .render('postPage');
     }
+});
+
+router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('login');
 });
 
 module.exports = router;
