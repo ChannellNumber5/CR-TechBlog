@@ -1,7 +1,7 @@
 <div id="blogPosts">
     <h2>Your Dashboard</h2>
     <ul>
-    {{#each post in plainPosts}}
+    {{#each plainPosts as |post| }}
     <div class="postCard" id="post{{postId}}">
     <div class="postTitle">
         <h3>{{post.title}}</h3>
@@ -11,7 +11,7 @@
     </div>
     <button class="deleteBtn">x</button>
     </div>
-    {{//each}}
+    {{/each}}
     </ul>
     <button type="button" value="newPost">+ New Post</button>
 </div>
