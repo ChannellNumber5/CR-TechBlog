@@ -3,7 +3,7 @@ const { User, Post, Comment } = require('../models');
 const Authenticated = require('../utils/auth');
 
 //homePage shows all Posts posted on the blog from all users
-router.get('/homePage', Authenticated, async (req, res) => {
+router.get('/', Authenticated, async (req, res) => {
     try {
         const posts = await Post.findAll();
         if(!posts) {
@@ -70,6 +70,15 @@ router.get('/login', (req, res) => {
     }
 
     res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('signup');
 });
 
 module.exports = router;
