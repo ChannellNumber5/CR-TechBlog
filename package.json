@@ -18,7 +18,6 @@
   "bugs": {
     "url": "https://github.com/ChannellNumber5/CR-TechBlog/issues"
   },
-  "homepage": "https://github.com/ChannellNumber5/CR-TechBlog#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.3",

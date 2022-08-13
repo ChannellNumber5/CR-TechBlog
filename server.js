@@ -35,6 +35,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 app.use(express.static(path.join(__dirname, 'public'))); // serves out public static files
 
+
 app.use(routes); //uses the controller to handle routes and requests to routes
 
 //syncs all sequelize models in the database, without overwriting them, and then starts up the server
