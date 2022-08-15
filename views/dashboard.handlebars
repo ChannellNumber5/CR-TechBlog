@@ -1,6 +1,6 @@
 <div id="blogPosts">
     <h2>Your Dashboard</h2>
-    <ul>
+    <ul id="postContainer">
     {{#each plainPosts as |post| }}
     <div class="postCard" id="post{{postId}}">
     <div class="postTitle">
@@ -13,7 +13,7 @@
     </div>
     {{/each}}
     </ul>
-    <button type="button" value="newPost">+ New Post</button>
+    <button type="button" value="newPost" id="newPost" >+ New Post</button>
 </div>
 
 <script src="./js/dashboard.js"></script>

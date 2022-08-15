@@ -1,7 +1,7 @@
 async function signUpHandler(event) {
     event.preventDefault();
     const username = document.querySelector('#username').value.trim();
-    const password = document.querySelector('#password').value.trim();
+    const password = document.querySelector('#pass').value.trim();
     const email = document.querySelector('#userEmail').value.trim();
     const verifPass = document.querySelector('#repass').value.trim();
 
