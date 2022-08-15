@@ -3,6 +3,7 @@ async function loginHandler(event) {
     event.preventDefault();
     const email = document.querySelector('#email').value.trim();
     const password = document.querySelector('#pass').value.trim();
+
     if (!email) {
         alert("Please Enter a valid email");
         document.getElementById('logInForm').reset();
@@ -23,7 +24,7 @@ async function loginHandler(event) {
     }); 
     
     if (response.ok) {
-        window.location.replace('/dashboard')
+        window.location.replace('/dashboard');
     } else {
         alert(response.statusText);
     }

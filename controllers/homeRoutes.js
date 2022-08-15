@@ -83,12 +83,12 @@ router.get('/signup', (req, res) => {
 
 
 router.get('/createPost', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/createPost');
+    if (!req.session.logged_in) {
+        res.redirect('/');
         return;
     }
 
-    res.render('login');
+    res.render('createPost');
 });
 
 module.exports = router;

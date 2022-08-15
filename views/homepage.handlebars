@@ -1,6 +1,6 @@
 <div id="blogPosts">
     <h2>Remarked Posts</h2>
-    {{#each post in plainPosts}}
+    {{#each plainPosts as |post|}}
     <div class="postCard" id="post{{postId}}">
         <div class="titleBlock">
             <h3>{{post.title}}</h3>
@@ -12,6 +12,6 @@
             <h4>Posted by {{post.username}} on {{post.date}}</h4>
         </div>
     </div>
-    {{//each}}
+    {{/each}}
 </div>
 <script src="./js/homePage.js"></script>

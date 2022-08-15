@@ -1,5 +1,3 @@
-const title
-
 
 async function createPostHandler (event) {
     const title = document.querySelector('#title');
