@@ -60,7 +60,7 @@ router.get('/:postId', authenticated, async (req, res) => {
             ]
         });
 
-        res.status(200).json(queriedPost).render('/postPage', {queriedPost});
+        res.status(200).render('postPage', {queriedPost});
     } catch (err) {
         res.status(400).json(err);
     }

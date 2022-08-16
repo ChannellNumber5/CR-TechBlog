@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="commentContainer">
-        {{#each plainComments as |comment|}}
+        {{#each queriedPost.comments as |comment|}}
         <div class="commentCard" id={{comment.id}} data-username={{comment.username}}>
             <div class="commentHeader"></div>
             <div class="commentBody">
