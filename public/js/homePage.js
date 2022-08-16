@@ -3,10 +3,11 @@ const postContainer = document.getElementById("blogPosts");
 function postSelectHandler (event) {
     event.preventDefault();
 
-    if (event.target.hasClass("postCard")) {
+    if (event.target.classList.contains("postCard")) {
         const postId = event.target.getAttribute('id');
-        window.location.replace(`/postPage/${postId}`);
+        console.log(postId);
+        window.location.replace(`/api/posts/${postId}`);
     }
 }
 
-postContainer.addEventListener(postContainer);
+postContainer.addEventListener('click', postSelectHandler);

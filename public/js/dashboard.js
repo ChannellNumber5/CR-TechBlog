@@ -35,6 +35,6 @@ async function postHandler (event) {
 }
 
 postContainer.addEventListener('click', postHandler);
-document.querySelector('#newPost').addEventListener('onClick', window.location.replace('/createPost'));
+document.querySelector('#newPost').addEventListener('click', window.location.replace('/createPost'));
 // deleteBtns.addEventListener('click', postDeleteHandler);
 

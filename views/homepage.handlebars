@@ -1,7 +1,7 @@
 <div id="blogPosts">
     <h2>Remarked Posts</h2>
     {{#each plainPosts as |post|}}
-    <div class="postCard" id="post{{postId}}">
+    <div class="postCard" id="{{post.id}}">
         <div class="titleBlock">
             <h3>{{post.title}}</h3>
         </div>
