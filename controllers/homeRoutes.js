@@ -1,17 +1,18 @@
 const router = require("express").Router();
+const { restart } = require("nodemon");
 const { User, Post, Comment } = require('../models');
 const Authenticated = require('../utils/auth');
 
 //homePage shows all Posts posted on the blog from all users
 router.get('/', Authenticated, async (req, res) => {
     try {
-        const posts = await Post.findAll();
-        if(!posts) {
+        const Posts = await Post.findAll();
+        if(!allPosts) {
             res.json({message: "No Posts Found."})
             .render('homePage');
         }
 
-        const plainPosts = posts.map((posts) => posts.get({ plain:true }));
+        const plainPosts = allPosts.map((posts) => posts.get({ plain:true }));
         res.render('homePage', { plainPosts});
     } catch (err) {
         res.status(500).json({message: 'Error loading posts'})
@@ -60,16 +61,24 @@ router.get('/postPage/:postId', Authenticated, async (req, res) => {
         });
 
         const commentData = await Comment.findAll({where:{postId: req.params.postId}});
+
         if(!postData) {
             res.json ({message: "No Posts Found."})
             .render('postPage');
         }
-        if(!comment)
-
 
         const post = postData.map((posts) => postData.get({ plain:true }));
         console.log(post);
-        res.render('postPage', { post });
+
+        if(!commentData) {
+            res.json({message: "No comments Found."})
+            .render('postPage', {postData})
+        }
+        const comment = commentData.map((comments) => commentData.get({plain:true}));
+        console.log(comment);
+
+        res.render('postPage', { post, comment});
+
     } catch (err) {
         res.status(500).json({message: 'Error loading post'})
         .render('postPage');
@@ -95,13 +104,22 @@ router.get('/signup', (req, res) => {
 });
 
 
-router.get('/createPost', (req, res) => {
-    if (!req.session.logged_in) {
-        res.redirect('/');
-        return;
-    }
-
+router.get('/createPost', Authenticated, (req, res) => {
     res.render('createPost');
 });
+
+router.get('/updatePost/:postId', Authenticated, (req, res) => {
+    try {
+        const post = await findOne({where: {_id: req.params.postId}});
+
+        if(!post) {
+            res.status(400).json({message: "post could not be rendered"})
+        }
+        const postData = post.map((posts) => post.get({plain:true}));
+    } catch(err) {
+        res.status(400).json({message: err});
+    }
+});
+
 
 module.exports = router;
