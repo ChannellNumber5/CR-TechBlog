@@ -2,17 +2,6 @@ const router = require('express').Router();
 const {Post, Comment} = require('../../models');
 const authenticated  = require('../../utils/auth');
 
-//what do I need:
-//Get all posts - done
-//Get single post and associated comments for that post - done
-//Get all posts for single user -- done
-//Update Post -- done
-//Update comment on post?
-//Create new post -- done
-//Create new comment -- done
-//Delete Post -- done
-//Delete Comment?
-
 
 //posts new blog post, but can only be accessed when user is logged in based on authenticated middleware
 router.post('/', authenticated, async (req, res) => {
@@ -28,66 +17,7 @@ router.post('/', authenticated, async (req, res) => {
     }
 });
 
-//finds all posts and their associated comments
-router.get('/', authenticated, async (req, res) => {
-    try {
-        const posts = await Post.findAll({
-            include: [
-                {
-                    model: Comment,
-                    attributes:['id','userId','dateCreated', 'content']
-                }
-            ],
-        });
-        res.status(200).json(posts);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-//gets single post by it's id and it's associated comments
-router.get('/:postId', authenticated, async (req, res) => {
-    try {
-        const queriedPost = await Post.findOne({
-            where: {
-                id: req.params.postId
-            },
-            include: [
-                {
-                    model:Comment,
-                    attributes:['id','userId','dateCreated', 'content']
-                },
-            ]
-        });
-
-        res.status(200).render('postPage', {queriedPost});
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-//gets all posts for single user and their associated comments
-router.get('/:userId', authenticated, async (req, res) => {
-    try {
-        const queriedPost = await Post.findAll({
-            where: {
-                userId: req.params.userId
-            },
-            include: [
-                {
-                    model:Comment,
-                    attributes:['id','userId','dateCreated', 'content']
-                },
-            ]
-        });
-
-        res.status(200).json(queriedPost);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-//gets single post by it's id and it's associated comments
+//updates single post by it's id and it's associated comments
 router.put('/:postId', authenticated, async (req, res) => {
     try {
         const updatedPost = await Post.update({
@@ -114,18 +44,6 @@ router.post('/comment', authenticated, async (req, res) => {
         });
 
         res.status(200).json(newComment);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-//finds all comments
-router.get('/comment', authenticated, async (req, res) => {
-    console.log(`Retrieving comments`);
-    try {
-        const comments = await Comment.findAll();
-        console.log(`here are the comments: ${comments}`);
-        res.status(200).json(comments);
     } catch (err) {
         res.status(400).json(err);
     }

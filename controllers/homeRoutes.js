@@ -22,7 +22,15 @@ router.get('/', Authenticated, async (req, res) => {
 //dashboard shows user's page and their specific posts
 router.get('/dashboard', Authenticated, async (req, res) => {
     try {
-        const posts = await Post.findAll({ where: {userId: req.session.userId}});
+        const posts = await Post.findAll({ 
+            where: {userId: req.session.userId},
+            include: [
+                {
+                    model:Comment,
+                    attributes:['id','userId','dateCreated', 'content']
+                },
+            ]
+        });
         if(!posts) {
             res.json ({message: "No Posts Found."})
             .render('dashboard');
@@ -39,7 +47,7 @@ router.get('/dashboard', Authenticated, async (req, res) => {
 //postPage shows the specific page for each post and associated comments with post. Users can also add comments to posts from this page
 router.get('/postPage/:postId', Authenticated, async (req, res) => {
     try {
-        const postData = await Post.findOne(req.params.postId, {
+        const postData = await Post.findOne({
             where: {
                 id: req.params.postId
             },
@@ -50,12 +58,17 @@ router.get('/postPage/:postId', Authenticated, async (req, res) => {
                 },
             ]
         });
+
+        const commentData = await Comment.findAll({where:{postId: req.params.postId}});
         if(!postData) {
             res.json ({message: "No Posts Found."})
             .render('postPage');
         }
+        if(!comment)
+
 
         const post = postData.map((posts) => postData.get({ plain:true }));
+        console.log(post);
         res.render('postPage', { post });
     } catch (err) {
         res.status(500).json({message: 'Error loading post'})
