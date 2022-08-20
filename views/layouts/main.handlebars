@@ -11,10 +11,10 @@
         </header>
             <nav>
                 <ul>
-                    <li><a href="/homepage">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="/dashboard">Dashboard</a></li>
                     {{#if logged_in}}
-                        <li><a href="/">Logout</a></li>
+                        <li><a id="logout" href="/">Logout</a></li>
                     {{else}}
                         <li><a href="/login">Log In/Sign Up</a></li>
                     {{/if}}
@@ -24,4 +24,5 @@
             {{{body}}}
         </main>
     </body>
+    <script src="./logout"></script>
 </html>
