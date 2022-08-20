@@ -23,4 +23,4 @@ async function createPostHandler (event) {
     }
 
 
-document.querySelector("#createPost").addEventListener('onSubmit', postHandler);
+document.querySelector("#createPost").addEventListener('onSubmit', createPostHandler);
