@@ -106,6 +106,16 @@ router.get('/signup', (req, res) => {
     res.render('signup', logged_in);
 });
 
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end(); //204 status code means there's no content, which makes sense because the user has been logged out
+        });
+    } else {
+        res.status(404).end();
+    }
+});
+
 
 router.get('/createPost', Authenticated, (req, res) => {
     const logged_in = req.session.logged_in;
