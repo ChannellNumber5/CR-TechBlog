@@ -24,5 +24,7 @@
             {{{body}}}
         </main>
     </body>
-    <script src="./js/logout"></script>
+    {{#if logged_in}}
+    <script src="./js/logout.js"></script>
+    {{/if}}
 </html>

@@ -23,7 +23,6 @@ router.get('/', Authenticated, async (req, res) => {
 //dashboard shows user's page and their specific posts
 router.get('/dashboard', Authenticated, async (req, res) => {
     try {
-        const logged_in = req.session.logged_in;
         const posts = await Post.findAll({ 
             where: {userId: req.session.userId},
             include: [
