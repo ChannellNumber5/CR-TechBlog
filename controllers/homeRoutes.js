@@ -5,7 +5,7 @@ const Authenticated = require('../utils/auth');
 //homePage shows all Posts posted on the blog from all users
 router.get('/', Authenticated, async (req, res) => {
     try {
-        const logged_in = req.session.logged_in;
+        const logged_in = req.session.loggedIn;
         const allPosts = await Post.findAll();
         if(!allPosts) {
             res.json({message: "No Posts Found."})
@@ -34,7 +34,7 @@ router.get('/dashboard', Authenticated, async (req, res) => {
         });
         if(!posts) {
             res.json ({message: "No Posts Found."})
-            .render('dashboard', {logged_in});
+            .render('dashboard', {logged_in:req.session.loggedIn});
         }
 
         const plainPosts = posts.map((posts) => posts.get({ plain:true }));
@@ -48,7 +48,7 @@ router.get('/dashboard', Authenticated, async (req, res) => {
 //postPage shows the specific page for each post and associated comments with post. Users can also add comments to posts from this page
 router.get('/postPage/:postId', Authenticated, async (req, res) => {
     try {
-        const logged_in = req.session.logged_in;
+        const logged_in = req.session.loggedIn;
         const postData = await Post.findOne({
             where: {
                 id: req.params.postId
@@ -96,7 +96,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-    const logged_in = req.session.logged_in;
+    const logged_in = req.session.loggedIn;
     if (logged_in) {
         res.redirect('/');
         return;
@@ -117,13 +117,13 @@ router.post('/logout', (req, res) => {
 
 
 router.get('/createPost', Authenticated, (req, res) => {
-    const logged_in = req.session.logged_in;
+    const logged_in = req.session.loggedIn;
     res.render('createPost', {logged_in});
 });
 
 router.get('/updatePost/:postId', Authenticated, async (req, res) => {
     try {
-        const logged_in = req.session.logged_in;
+        const logged_in = req.session.loggedIn;
         const post = await findOne({where: {_id: req.params.postId}});
 
         if(!post) {
