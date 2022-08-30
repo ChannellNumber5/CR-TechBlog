@@ -2,7 +2,7 @@
     <div class="postCard">
         <div class="titleBlock">
             <h3>{{queriedPost.title}}</h3>
-            <h5>Posted by {{queriedPost.username}} on {{queriedPost.date}}</h5>
+            <h5>Posted by {{queriedPost.username}} on {{queriedPost.dateCreated}}</h5>
         </div>
         <div class="postContent">
             <p>{{queriedPost.content}}</p>
@@ -12,13 +12,13 @@
     </div>
     <div class="commentContainer">
         {{#each queriedPost.comments as |comment|}}
-        <div class="commentCard" id={{comment.id}} data-username={{comment.username}}>
+        <div class="commentCard" id={{comment.id}} data-username={{comment.user.username}}>
             <div class="commentHeader"></div>
             <div class="commentBody">
                 <p>{{comment.content}}</p>
             </div>
             <div class="commentFooter">
-                <h6>{{comment.username}} on {{comment.date}}</h6>
+                <h6>{{comment.user.username}} on {{comment.dateCreated}}</h6>
             </div>
         </div>
         {{/each}}
