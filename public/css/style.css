@@ -1,20 +1,27 @@
-* {
+body {
     background-color: slategrey;
     margin:auto;
     padding:0;
     font-family: 'Oswald', sans-serif;
 }
-/* 
-h1 {
-    font-family: 'Oswald', sans-serif;
-} */
+
+header {
+    margin: 5% 60% 0% 2%;
+}
+
+h2 {
+    color: whitesmoke;
+    border-bottom: double black;
+    max-width: 60%;
+    text-align: left;
+}
 
 nav {
     display: inline-flex;
-    /* justify-content: flex-start; */
+    justify-content: space-between;
     background-color: black;
     border-bottom: 2px solid lime;
-    min-width:80%;
+    min-width: 60%;
     margin: 0; 
 }
 
@@ -23,4 +30,43 @@ nav > a {
     text-decoration: none;
     background-color:black;    
     color: lime;
+    margin: 0 15px;
+}
+
+#blogPosts {
+    margin:auto;
+}
+.postCard {
+    background-color: black;
+    color: whitesmoke;
+    border: solid lime 2px;
+    max-width: 50%;
+    margin: 10px 5px;
+    border-radius: 5px;
+}
+
+.titleBlock {
+    color:lime;
+    background-color: black;
+    margin:0;
+    padding:0;
+}
+
+.postBody, .footer {
+    color: whitesmoke;
+    background-color: black;
+    margin:0;
+    padding:0;
+}
+
+.postTitle, .postDate {
+    color:lime;
+    background-color: black;
+    margin:0;
+    padding:0;
+}
+
+#postContainer {
+    display: flex-wrap;
+
 }
