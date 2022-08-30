@@ -1,0 +1,26 @@
+* {
+    background-color: slategrey;
+    margin:auto;
+    padding:0;
+    font-family: 'Oswald', sans-serif;
+}
+/* 
+h1 {
+    font-family: 'Oswald', sans-serif;
+} */
+
+nav {
+    display: inline-flex;
+    /* justify-content: flex-start; */
+    background-color: black;
+    border-bottom: 2px solid lime;
+    min-width:80%;
+    margin: 0; 
+}
+
+nav > a {
+/*     justify-content: space-around; */
+    text-decoration: none;
+    background-color:black;    
+    color: lime;
+}
