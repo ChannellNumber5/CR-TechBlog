@@ -6,13 +6,22 @@ const Authenticated = require('../utils/auth');
 router.get('/', Authenticated, async (req, res) => {
     try {
         const logged_in = req.session.loggedIn;
-        const allPosts = await Post.findAll();
+        const allPosts = await Post.findAll({
+            include:[
+                {
+                    model:User,
+                    attributes:['username']
+                }
+            ]
+        });
+
         if(!allPosts) {
             res.json({message: "No Posts Found."})
             .render('homePage');
         }
 
         const plainPosts = allPosts.map((posts) => posts.get({ plain:true }));
+        console.log(plainPosts);
         res.render('homePage', { plainPosts, logged_in});
     } catch (err) {
         res.status(500).json({message: 'Error loading posts'})
