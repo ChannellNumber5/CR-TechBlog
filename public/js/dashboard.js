@@ -34,7 +34,15 @@ async function postHandler (event) {
     }
 }
 
+
+function newPostHandler(event) {
+    event.preventDefault();
+    if (event.target.getAttribute("id") === "newPost"){ 
+        window.location.replace('/createPost');
+    }
+}
+
 postContainer.addEventListener('click', postHandler);
-document.querySelector('#newPost').addEventListener('click', window.location.replace('/createPost'));
+document.getElementById('newPost').addEventListener('click', newPostHandler);
 // deleteBtns.addEventListener('click', postDeleteHandler);
 

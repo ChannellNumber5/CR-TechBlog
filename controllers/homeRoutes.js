@@ -32,6 +32,7 @@ router.get('/dashboard', Authenticated, async (req, res) => {
                 },
             ]
         });
+        
         if(!posts) {
             res.json ({message: "No Posts Found."})
             .render('dashboard', {logged_in:req.session.loggedIn});
@@ -39,6 +40,7 @@ router.get('/dashboard', Authenticated, async (req, res) => {
 
         const plainPosts = posts.map((posts) => posts.get({ plain:true }));
         res.render('dashboard', { plainPosts});
+
     } catch (err) {
         res.status(500).json({message: 'Error loading posts'})
         .render('dashboard');
